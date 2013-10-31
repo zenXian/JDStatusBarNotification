@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>JDStatusBarNotification by jaydee3</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/jaydee3/JDStatusBarNotification">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/jaydee3/JDStatusBarNotification/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/jaydee3/JDStatusBarNotification/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>JDStatusBarNotification</h1>
+          <p>[iOS] Easy, customizable notifications displayed on top of the statusbar.</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/jaydee3">jaydee3</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>
+<a name="jdstatusbarnotification" class="anchor" href="#jdstatusbarnotification"><span class="octicon octicon-link"></span></a>JDStatusBarNotification</h1>
+
+<p>Show messages on top of the status bar. Customizable colors, font and animation. iOS 7 ready.</p>
+
+<p><img src="gfx/animation.gif" alt="Animation" title="Animation"></p>
+
+<p><img src="gfx/screenshots.png" alt="Screenshots" title="Screenshots"></p>
+
+<h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p><strong>Install via pods:</strong><br><code>pod 'JDStatusBarNotification'</code></p>
+
+<p><strong>Manually:</strong>  </p>
+
+<ol>
+<li>Drag the <code>JDStatusBarNotification/JDStatusBarNotification</code> folder into your project.</li>
+<li>Add <code>#include "JDStatusBarNotification.h"</code>, where you want to use it</li>
+</ol><h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>JDStatusBarNotification is a singleton. You don't need to initialize it anywhere.
+Just use the following class methods:</p>
+
+<h3>
+<a name="showing-a-notification" class="anchor" href="#showing-a-notification"><span class="octicon octicon-link"></span></a>Showing a notification</h3>
+
+<pre><code>+ (void)showWithStatus:(NSString *)status;
++ (void)showWithStatus:(NSString *)status
+          dismissAfter:(NSTimeInterval)timeInterval;
+</code></pre>
+
+<h3>
+<a name="dismissing-a-notification" class="anchor" href="#dismissing-a-notification"><span class="octicon octicon-link"></span></a>Dismissing a notification</h3>
+
+<pre><code>+ (void)dismiss;
++ (void)dismissAfter:(NSTimeInterval)delay;
+</code></pre>
+
+<h3>
+<a name="showing-a-notification-with-alternative-styles" class="anchor" href="#showing-a-notification-with-alternative-styles"><span class="octicon octicon-link"></span></a>Showing a notification with alternative styles</h3>
+
+<p>Available styles: <code>JDStatusBarStyleError</code>, <code>JDStatusBarStyleWarning</code> or <code>JDStatusBarStyleSuccess</code>;</p>
+
+<pre><code>+ (void)showWithStatus:(NSString *)status
+             styleName:(NSString*)styleName;
+
++ (void)showWithStatus:(NSString *)status
+          dismissAfter:(NSTimeInterval)timeInterval
+             styleName:(NSString*)styleName;
+</code></pre>
+
+<p>To present a notification using a custom style, use the <code>identifier</code> you specified in <code>addStyleNamed:prepare:</code>. See Customization below.</p>
+
+<h2>
+<a name="customization" class="anchor" href="#customization"><span class="octicon octicon-link"></span></a>Customization</h2>
+
+<pre><code>+ (void)setDefaultStyle:(JDPrepareStyleBlock)prepareBlock;
+
++ (NSString*)addStyleNamed:(NSString*)identifier
+                   prepare:(JDPrepareStyleBlock)prepareBlock;
+</code></pre>
+
+<p>The <code>prepareBlock</code> gives you a copy of the default style, which can be modified as you like:</p>
+
+<pre><code>[JDStatusBarNotification addStyleNamed:&lt;#identifier#&gt;
+                               prepare:^JDStatusBarStyle*(JDStatusBarStyle *style) {
+                                   style.barColor = &lt;#color#&gt;;
+                                   style.textColor = &lt;#color#&gt;;
+                                   style.animationType = &lt;#type#&gt;;
+                                   style.font = &lt;#font#&gt;;
+                                   return style;
+                               }];
+</code></pre>
+
+<h2>
+<a name="twitter" class="anchor" href="#twitter"><span class="octicon octicon-link"></span></a>Twitter</h2>
+
+<p>I'm <a href="http://twitter.com/jaydee3">@jaydee3</a> on Twitter. Feel free to <a href="https://twitter.com/intent/tweet?button_hashtag=JDStatusBarNotification&amp;text=Simple%20and%20customizable%20statusbar%20notifications%20for%20iOS!%20Check%20it%20out.%20https://github.com/jaydee3/JDStatusBarNotification&amp;via=jaydee3">post a tweet</a>, if you like JDStatusBarNotification.  </p>
+
+<p><a href="https://twitter.com/intent/tweet?button_hashtag=JDStatusBarNotification&amp;text=Simple%20and%20customizable%20statusbar%20notifications%20for%20iOS!%20Check%20it%20out.%20https://github.com/jaydee3/JDStatusBarNotification&amp;via=jaydee3"><img src="gfx/tweetbutton.png" alt="TweetButton" title="Tweet"></a></p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
