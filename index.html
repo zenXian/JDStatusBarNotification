@@ -83,7 +83,7 @@ Just use the following class methods:</p>
 
 <p><img src="gfx/progress.gif" title="Progress animation" alt="Progress animation" /></p>
 
-<pre><code>+ (void)showProgress:(CGFloat)progress;
+<pre><code>+ (void)showProgress:(CGFloat)progress;  // Range: 0.0 - 1.0
 </code></pre>
 
 <h3>Showing activity</h3>
@@ -96,7 +96,19 @@ Just use the following class methods:</p>
 
 <h3>Showing a notification with alternative styles</h3>
 
-<p>Available styles: <code>JDStatusBarStyleDefault</code>, <code>JDStatusBarStyleDark</code>, <code>JDStatusBarStyleError</code>, <code>JDStatusBarStyleWarning</code> or <code>JDStatusBarStyleSuccess</code>;</p>
+<p>Available included styles:</p>
+
+<ul>
+<li><code>JDStatusBarStyleDefault</code> (gray/gray)</li>
+<li><code>JDStatusBarStyleDark</code> (black/white)</li>
+<li><code>JDStatusBarStyleMatrix</code> (black/green)</li>
+<li><code>JDStatusBarStyleError</code> (red/white)</li>
+<li><code>JDStatusBarStyleWarning</code> (yellow/gray)</li>
+<li><code>JDStatusBarStyleSuccess</code> (green/white)</li>
+</ul>
+
+
+<p>Use them with the following methods:</p>
 
 <pre><code>+ (UIView*)showWithStatus:(NSString *)status
                 styleName:(NSString*)styleName;
@@ -120,6 +132,7 @@ Just use the following class methods:</p>
 
 <pre><code>[JDStatusBarNotification addStyleNamed:&lt;#identifier#&gt;
                                prepare:^JDStatusBarStyle*(JDStatusBarStyle *style) {
+
                                    style.barColor = &lt;#color#&gt;;
                                    style.textColor = &lt;#color#&gt;;
                                    style.font = &lt;#font#&gt;;
@@ -129,6 +142,7 @@ Just use the following class methods:</p>
 
                                    style.progressBarColor = &lt;#color#&gt;;
                                    style.progressBarHeight = &lt;#height#&gt;;
+                                   style.progressBarPosition = &lt;#position#&gt;;
 
                                    return style;
                                }];
