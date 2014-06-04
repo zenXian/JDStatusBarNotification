@@ -9,31 +9,31 @@
 import Foundation
 import UIKit
 
-enum BarStylePreset:String {
-    case Error   = "JDStatusBarStyleError"    // red on white
-    case Warning = "JDStatusBarStyleWarning"  // black on yellow
-    case Success = "JDStatusBarStyleSuccess"  // green on light grey
-    case Matrix  = "JDStatusBarStyleMatrix"   // green on black with monospace font
-    case Default = "JDStatusBarStyleDefault"  // black on white
-    case Dark    = "JDStatusBarStyleDark"     // bright grey on black
-}
-
-enum AnimationType {
-    case None    /// Notification won't animate
-    case Move    /// Notification will move in from the top, and move out again to the top
-    case Bounce  /// Notification will fall down from the top and bounce a little bit
-    case Fade    /// Notification will fade in and fade out
-}
-
-enum ProgressBarPosition {
-    case Bottom /// progress bar will be at the bottom of the status bar
-    case Center /// progress bar will be at the center of the status bar
-    case Top    /// progress bar will be at the top of the status bar
-    case Below  /// progress bar will be below the status bar (the prograss bar won't move with the statusbar in this case)
-    case NavBar /// progress bar will be below the navigation bar (the prograss bar won't move with the statusbar in this case)
-}
-
 class StatusBarStyle {
+    
+    enum BarStylePreset:String {
+        case Error   = "JDStatusBarStyleError"    // red on white
+        case Warning = "JDStatusBarStyleWarning"  // black on yellow
+        case Success = "JDStatusBarStyleSuccess"  // green on light grey
+        case Matrix  = "JDStatusBarStyleMatrix"   // green on black with monospace font
+        case Default = "JDStatusBarStyleDefault"  // black on white
+        case Dark    = "JDStatusBarStyleDark"     // bright grey on black
+    }
+    
+    enum AnimationType {
+        case None    /// Notification won't animate
+        case Move    /// Notification will move in from the top, and move out again to the top
+        case Bounce  /// Notification will fall down from the top and bounce a little bit
+        case Fade    /// Notification will fade in and fade out
+    }
+    
+    enum ProgressBarPosition {
+        case Bottom /// progress bar will be at the bottom of the status bar
+        case Center /// progress bar will be at the center of the status bar
+        case Top    /// progress bar will be at the top of the status bar
+        case Below  /// progress bar will be below the status bar (the prograss bar won't move with the statusbar in this case)
+        case NavBar /// progress bar will be below the navigation bar (the prograss bar won't move with the statusbar in this case)
+    }
     
     /// The background color of the notification bar
     var barColor :UIColor
