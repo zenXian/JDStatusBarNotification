@@ -19,6 +19,7 @@
 		D264F8C21820216300DA0E53 /* JDStatusBarNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = D264F8C11820216300DA0E53 /* JDStatusBarNotification.m */; };
 		D264F8C61820219F00DA0E53 /* SBExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D264F8C41820219F00DA0E53 /* SBExampleViewController.m */; };
 		D264F8C9182123D400DA0E53 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D264F8C8182123D400DA0E53 /* QuartzCore.framework */; };
+		D2835203193F34E200BDE64A /* StatusBarStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2835202193F34E200BDE64A /* StatusBarStyle.swift */; };
 		D294B57B182D03E90042B5B4 /* SBCustomStyleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D294B579182D03E90042B5B4 /* SBCustomStyleViewController.m */; };
 		D294B57C182D03E90042B5B4 /* SBCustomStyleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D294B57A182D03E90042B5B4 /* SBCustomStyleViewController.xib */; };
 		D34E5C9AB857468496D1A147 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 25F89E831D0E4D728185F5B4 /* libPods.a */; };
@@ -48,6 +49,7 @@
 		D264F8C31820219F00DA0E53 /* SBExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBExampleViewController.h; sourceTree = "<group>"; };
 		D264F8C41820219F00DA0E53 /* SBExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBExampleViewController.m; sourceTree = "<group>"; };
 		D264F8C8182123D400DA0E53 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D2835202193F34E200BDE64A /* StatusBarStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBarStyle.swift; sourceTree = "<group>"; };
 		D294B578182D03E90042B5B4 /* SBCustomStyleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBCustomStyleViewController.h; sourceTree = "<group>"; };
 		D294B579182D03E90042B5B4 /* SBCustomStyleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBCustomStyleViewController.m; sourceTree = "<group>"; };
 		D294B57A182D03E90042B5B4 /* SBCustomStyleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SBCustomStyleViewController.xib; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				D25B0FA7184F364100B8174B /* JDStatusBarStyle.m */,
 				D25B0FA3184F343600B8174B /* JDStatusBarView.h */,
 				D25B0FA4184F343600B8174B /* JDStatusBarView.m */,
+				D2835202193F34E200BDE64A /* StatusBarStyle.swift */,
 			);
 			name = JDStatusBarNotification;
 			path = ../JDStatusBarNotification;
@@ -244,6 +247,7 @@
 				D264F89D1820213200DA0E53 /* main.m in Sources */,
 				D25B0FA5184F343700B8174B /* JDStatusBarView.m in Sources */,
 				D264F8A11820213200DA0E53 /* SBAppDelegate.m in Sources */,
+				D2835203193F34E200BDE64A /* StatusBarStyle.swift in Sources */,
 				D264F8C21820216300DA0E53 /* JDStatusBarNotification.m in Sources */,
 				D264F8C61820219F00DA0E53 /* SBExampleViewController.m in Sources */,
 				D25B0FA8184F364100B8174B /* JDStatusBarStyle.m in Sources */,
@@ -333,10 +337,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JDStatusBarNotificationExample/JDStatusBarNotificationExample-Prefix.pch";
 				INFOPLIST_FILE = "JDStatusBarNotificationExample/JDStatusBarNotificationExample-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WARNING_CFLAGS = "-Wall";
 				WRAPPER_EXTENSION = app;
 			};
@@ -348,9 +355,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JDStatusBarNotificationExample/JDStatusBarNotificationExample-Prefix.pch";
 				INFOPLIST_FILE = "JDStatusBarNotificationExample/JDStatusBarNotificationExample-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "-Wall";
 				WRAPPER_EXTENSION = app;
