@@ -22,6 +22,7 @@
 		D2835203193F34E200BDE64A /* StatusBarStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2835202193F34E200BDE64A /* StatusBarStyle.swift */; };
 		D294B57B182D03E90042B5B4 /* SBCustomStyleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D294B579182D03E90042B5B4 /* SBCustomStyleViewController.m */; };
 		D294B57C182D03E90042B5B4 /* SBCustomStyleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D294B57A182D03E90042B5B4 /* SBCustomStyleViewController.xib */; };
+		D2EB665A193F8D980083FC44 /* StatusBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EB6659193F8D980083FC44 /* StatusBarView.swift */; };
 		D34E5C9AB857468496D1A147 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 25F89E831D0E4D728185F5B4 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,7 @@
 		D294B578182D03E90042B5B4 /* SBCustomStyleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBCustomStyleViewController.h; sourceTree = "<group>"; };
 		D294B579182D03E90042B5B4 /* SBCustomStyleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBCustomStyleViewController.m; sourceTree = "<group>"; };
 		D294B57A182D03E90042B5B4 /* SBCustomStyleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SBCustomStyleViewController.xib; sourceTree = "<group>"; };
+		D2EB6659193F8D980083FC44 /* StatusBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 				D25B0FA7184F364100B8174B /* JDStatusBarStyle.m */,
 				D25B0FA3184F343600B8174B /* JDStatusBarView.h */,
 				D25B0FA4184F343600B8174B /* JDStatusBarView.m */,
+				D2EB6659193F8D980083FC44 /* StatusBarView.swift */,
 				D2835202193F34E200BDE64A /* StatusBarStyle.swift */,
 			);
 			name = JDStatusBarNotification;
@@ -250,6 +253,7 @@
 				D2835203193F34E200BDE64A /* StatusBarStyle.swift in Sources */,
 				D264F8C21820216300DA0E53 /* JDStatusBarNotification.m in Sources */,
 				D264F8C61820219F00DA0E53 /* SBExampleViewController.m in Sources */,
+				D2EB665A193F8D980083FC44 /* StatusBarView.swift in Sources */,
 				D25B0FA8184F364100B8174B /* JDStatusBarStyle.m in Sources */,
 				D228A0CA182DA75A006B7ABB /* SBSelectPropertyViewController.m in Sources */,
 				D294B57B182D03E90042B5B4 /* SBCustomStyleViewController.m in Sources */,
