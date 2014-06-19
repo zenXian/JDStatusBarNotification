@@ -79,7 +79,7 @@ class StatusBarStyle {
     
     class func statusBarStyleForPreset(presetName: BarStylePreset) -> StatusBarStyle {
 
-        var style = StatusBarStyle()
+        let style = StatusBarStyle()
         
         switch presetName {
         case .Error:

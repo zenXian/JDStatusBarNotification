@@ -15,57 +15,56 @@ class JDStatusBarView : UIView {
     var textLabel :UILabel
     var activityIndicatorView :UIActivityIndicatorView
     
+    var textVerticalPositionAdjustment :CGFloat {
+    didSet{ self.setNeedsLayout() }
+    }
+    
     init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        addLabel()
-        addActivityIndicator()
+        textLabel = UILabel()
+        activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .White)
         textVerticalPositionAdjustment = 0.0;
+        super.init(frame: frame)
+        setupLabel()
+        setupActivityIndicator()
     }
 
-    func addLabel() {
-        textLabel = UILabel()
+    func setupLabel() {
         textLabel.backgroundColor = UIColor.clearColor()
         textLabel.baselineAdjustment = .AlignCenters
         textLabel.textAlignment = .Center
         textLabel.adjustsFontSizeToFitWidth = true
         textLabel.clipsToBounds = true
-        addSubview(textLabel);
+        addSubview(textLabel)
     }
     
-    func addActivityIndicator() {
-        activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .White)
+    func setupActivityIndicator() {
         activityIndicatorView.transform = CGAffineTransformMakeScale(0.7, 0.7)
         activityIndicatorView.hidesWhenStopped = true
         addSubview(activityIndicatorView)
     }
     
-    var textVerticalPositionAdjustment :CGFloat {
-    didSet{ self.setNeedsLayout() }
-    }
-    
     override func layoutSubviews() {
         
         // label
-        self.textLabel.frame = CGRectMake(0, 1+self.textVerticalPositionAdjustment,
-            self.bounds.size.width, self.bounds.size.height-1);
+        var labelRect = bounds
+        labelRect.origin.x = 0
+        labelRect.origin.y = 1+textVerticalPositionAdjustment
+        labelRect.size.height -= 1
+        self.textLabel.frame = labelRect
         
         // activity indicator
         if !activityIndicatorView.hidden {
-            var textSize = currentTextSize()
+            let textSize = currentTextSize()
+            let availableSpaceHalf = ((self.bounds.size.width - textSize.width)/2.0)
             var indicatorFrame = activityIndicatorView.frame
-//            var availableSpaceHalf :Float = (self.bounds.size.width - textSize.width)/2.0
-//            indicatorFrame.origin.x = round(availableSpaceHalf - indicatorFrame.size.width - 8.0
-//            indicatorFrame.origin.y = ceil((1+(self.bounds.size.height - indicatorFrame.size.height)/2.0))
-//            activityIndicatorView.frame = indicatorFrame
+            indicatorFrame.origin.x = availableSpaceHalf - indicatorFrame.size.width - 8.0
+            indicatorFrame.origin.y = (1+(self.bounds.size.height - indicatorFrame.size.height)/2.0)
+            activityIndicatorView.frame = CGRectIntegral(indicatorFrame)
         }
     }
     
     func currentTextSize() -> CGSize {
-        var textSize = CGSizeZero
-        var attributes = [NSFontAttributeName:self.textLabel.font]
-        textSize = getboun
-        String
-        return textSize;
+        var attributes = [NSFontAttributeName:textLabel.font]
+        return textLabel.text.bridgeToObjectiveC().sizeWithAttributes(attributes)
     }
 }
