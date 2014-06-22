@@ -10,6 +10,26 @@ import Foundation
 import UIKit
 
 class StatusBarNotification {
+    
+    var dismissTimer:NSTimer?
+    var progress:CGFloat = 0
+    
+    var activeStyle:StatusBarStyle
+    var defaultStyle:StatusBarStyle
+    var userStyles:Dictionary<String,StatusBarStyle>
+    
+    // singleton
+//    class func sharedInstance() -> StatusBarNotification
+//    {
+//        var once:dispatch_once_t? = nil
+//        var sharedInstance:StatusBarNotification? = nil
+//        dispatch_once(&once) {
+//            sharedInstance = StatusBarNotification();
+//        }
+//        return sharedInstance!;
+//    }
+    
+    // -------------------------------- Class methods ---------------------------------------- //
 
     // Presentation
     class func showWithStatus(status:String) -> StatusBarView
@@ -74,6 +94,58 @@ class StatusBarNotification {
     class func isVisible() -> Bool
     {
         return false
+    }
+    
+    // ---------------------------------- Implementation ------------------------------------ //
+    
+    init()
+    {
+//        setupDefaultStyles()
+//        
+//        // register for orientation changes
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("willChangeStatusBarFrame:"),
+//            name:UIApplicationWillChangeStatusBarFrameNotification, object:nil)
+    }
+    
+    deinit
+    {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    // getter
+    var overlayWindow:UIWindow {
+    get {
+        
+    }
+    }
+    
+    var progressView:UIView {
+    get {
+        return UIView(frame:CGRectZero)
+    }
+    }
+    
+    var topBar:StatusBarView {
+    get {
+        
+    }
+    }
+    
+    
+    // Custom styles
+    func setupDefaultStyles()
+    {
+        defaultStyle = StatusBarStyle.statusBarStyleForPreset(.Default)
+        userStyles = Dictionary<String,StatusBarStyle>()
+        for styleName in StatusBarStyle.allDefaultBarStyles() {
+            userStyles[styleName.toRaw()] = StatusBarStyle.statusBarStyleForPreset(styleName)
+        }
+    }
+    
+    func addStyleNamed(identifier:String, prepare:(style:StatusBarStyle) -> StatusBarStyle) -> String
+    {
+        userStyles[identifier] = prepare(style:defaultStyle)
+        return identifier;
     }
 
 }
