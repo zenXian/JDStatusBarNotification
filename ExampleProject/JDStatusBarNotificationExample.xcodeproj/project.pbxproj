@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D20088C819571C5600E60EE4 /* StatusBarStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20088C619571C5600E60EE4 /* StatusBarStyle.swift */; };
 		D20088C919571C5600E60EE4 /* StatusBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20088C719571C5600E60EE4 /* StatusBarView.swift */; };
+		D20088CB19571CB200E60EE4 /* StatusBarNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20088CA19571CB200E60EE4 /* StatusBarNotification.swift */; };
 		D228A0CA182DA75A006B7ABB /* SBSelectPropertyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D228A0C9182DA75A006B7ABB /* SBSelectPropertyViewController.m */; };
 		D25B0FA5184F343700B8174B /* JDStatusBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = D25B0FA4184F343600B8174B /* JDStatusBarView.m */; };
 		D25B0FA8184F364100B8174B /* JDStatusBarStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = D25B0FA7184F364100B8174B /* JDStatusBarStyle.m */; };
@@ -31,6 +32,7 @@
 		53FFC4A835EA4347BBD86048 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		D20088C619571C5600E60EE4 /* StatusBarStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBarStyle.swift; sourceTree = "<group>"; };
 		D20088C719571C5600E60EE4 /* StatusBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBarView.swift; sourceTree = "<group>"; };
+		D20088CA19571CB200E60EE4 /* StatusBarNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBarNotification.swift; sourceTree = "<group>"; };
 		D228A0C8182DA75A006B7ABB /* SBSelectPropertyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBSelectPropertyViewController.h; sourceTree = "<group>"; };
 		D228A0C9182DA75A006B7ABB /* SBSelectPropertyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBSelectPropertyViewController.m; sourceTree = "<group>"; };
 		D25B0FA3184F343600B8174B /* JDStatusBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JDStatusBarView.h; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 		D20088C519571C5600E60EE4 /* JDStatusBarNotification_Swift */ = {
 			isa = PBXGroup;
 			children = (
+				D20088CA19571CB200E60EE4 /* StatusBarNotification.swift */,
 				D20088C619571C5600E60EE4 /* StatusBarStyle.swift */,
 				D20088C719571C5600E60EE4 /* StatusBarView.swift */,
 			);
@@ -265,6 +268,7 @@
 				D264F8C61820219F00DA0E53 /* SBExampleViewController.m in Sources */,
 				D25B0FA8184F364100B8174B /* JDStatusBarStyle.m in Sources */,
 				D228A0CA182DA75A006B7ABB /* SBSelectPropertyViewController.m in Sources */,
+				D20088CB19571CB200E60EE4 /* StatusBarNotification.swift in Sources */,
 				D294B57B182D03E90042B5B4 /* SBCustomStyleViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

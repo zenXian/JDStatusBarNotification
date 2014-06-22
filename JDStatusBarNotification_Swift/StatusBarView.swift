@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 
-class JDStatusBarView : UIView {
+class StatusBarView : UIView {
     
     var textLabel :UILabel
     var activityIndicatorView :UIActivityIndicatorView
