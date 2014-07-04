@@ -19,15 +19,13 @@ class StatusBarNotification {
     var userStyles:Dictionary<String,StatusBarStyle>
     
     // singleton
-//    class func sharedInstance() -> StatusBarNotification
-//    {
-//        var once:dispatch_once_t? = nil
-//        var sharedInstance:StatusBarNotification? = nil
-//        dispatch_once(&once) {
-//            sharedInstance = StatusBarNotification();
-//        }
-//        return sharedInstance!;
-//    }
+    class func sharedInstance() -> StatusBarNotification
+    {
+        struct Shared {
+            static let instance = StatusBarNotification()
+        }
+        return Shared.instance
+    }
     
     // -------------------------------- Class methods ---------------------------------------- //
 
