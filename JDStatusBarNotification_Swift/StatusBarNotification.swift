@@ -18,7 +18,9 @@ class StatusBarNotification {
     var defaultStyle:StatusBarStyle
     var userStyles:Dictionary<String,StatusBarStyle>
     
-    // singleton
+    
+    // ---------------------------------- Singleton ------------------------------------------ //
+    
     class func sharedInstance() -> StatusBarNotification
     {
         struct Shared {
@@ -53,17 +55,17 @@ class StatusBarNotification {
     // Dismissal
     class func dismiss()
     {
-        
+        dismissAnimated(true)
     }
     
     class func dismissAnimated(animated:Bool)
     {
-        
+        sharedInstance().dismissAnimated(true)
     }
     
     class func dismissAfter(delay:NSTimeInterval)
     {
-        
+        sharedInstance().setDismissTimer(interval:delay)
     }
     
     // Styles
@@ -98,16 +100,63 @@ class StatusBarNotification {
     
     init()
     {
-//        setupDefaultStyles()
-//        
-//        // register for orientation changes
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("willChangeStatusBarFrame:"),
-//            name:UIApplicationWillChangeStatusBarFrameNotification, object:nil)
+        defaultStyle = StatusBarStyle.statusBarStyleForPreset(.Default)
+        activeStyle = defaultStyle
+        
+        userStyles = Dictionary<String,StatusBarStyle>()
+        for styleName in StatusBarStyle.allDefaultBarStyles() {
+            userStyles[styleName.toRaw()] = StatusBarStyle.statusBarStyleForPreset(styleName)
+        }
+        
+        // register for orientation changes
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:"willChangeStatusBarFrame:",
+            name:UIApplicationWillChangeStatusBarFrameNotification, object:nil)
     }
     
     deinit
     {
         NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    // dismissing
+    func setDismissTimer(interval:NSTimeInterval)
+    {
+        let fireDate = NSDate(timeIntervalSinceNow:interval)
+        
+        dismissTimer?.invalidate()
+        dismissTimer = NSTimer(fireDate:fireDate, interval:0, target:self, selector:"dismiss:", userInfo:nil, repeats:false)
+        NSRunLoop.currentRunLoop().addTimer(dismissTimer, forMode: NSRunLoopCommonModes)
+    }
+    
+    func dismiss(timer:NSTimer)
+    {
+        dismissAnimated(true)
+    }
+    
+    func dismissAnimated(animated:Bool)
+    {
+        dismissTimer?.invalidate()
+        dismissTimer = nil
+    
+        // check animation type
+        let animationsEnabled = (activeStyle.animationType != .None)
+        animated = animated && animationsEnabled
+
+//        // animate out
+//        [UIView animateWithDuration:animated ? 0.4 : 0.0 animations:^{
+//        if (self.activeStyle.animationType == JDStatusBarAnimationTypeFade) {
+//        self.topBar.alpha = 0.0;
+//        } else {
+//        self.topBar.transform = CGAffineTransformMakeTranslation(0, -self.topBar.frame.size.height);
+//        }
+//        } completion:^(BOOL finished) {
+//        [self.overlayWindow removeFromSuperview];
+//        [self.overlayWindow setHidden:YES];
+//        _overlayWindow.rootViewController = nil;
+//        _overlayWindow = nil;
+//        _progressView = nil;
+//        _topBar = nil;
+//        }];
     }
     
     // getter
@@ -129,21 +178,23 @@ class StatusBarNotification {
     }
     }
     
-    
-    // Custom styles
-    func setupDefaultStyles()
-    {
-        defaultStyle = StatusBarStyle.statusBarStyleForPreset(.Default)
-        userStyles = Dictionary<String,StatusBarStyle>()
-        for styleName in StatusBarStyle.allDefaultBarStyles() {
-            userStyles[styleName.toRaw()] = StatusBarStyle.statusBarStyleForPreset(styleName)
-        }
-    }
-    
     func addStyleNamed(identifier:String, prepare:(style:StatusBarStyle) -> StatusBarStyle) -> String
     {
         userStyles[identifier] = prepare(style:defaultStyle)
         return identifier;
+    }
+    
+    func willChangeStatusBarFrame(notification:NSNotification)
+    {
+        let barFrameValue:NSValue = notification.userInfo[UIApplicationStatusBarFrameUserInfoKey] as NSValue
+        UIView.animateWithDuration(0.5) {
+            updateWindowTransform()
+            updateTopBarFrameWithStatusBarFrame(barFrameValue.CGRectValue)
+            
+            // update progress with current value
+            let progress = self.progress;
+            self.progress = progress;
+        }
     }
 
 }
